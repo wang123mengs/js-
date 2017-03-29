@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        ul {
+            list-style: none;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+
+        div {
+            width: 1150px;
+            height: 400px;
+            margin: 50px auto;
+            border: 1px solid red;
+            overflow: hidden;
+        }
+
+        div li {
+            width: 240px;
+            height: 400px;
+            float: left;
+        }
+
+        div ul {
+            width: 1300px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script src="common.js"></script>
+<script>
+    //第一步:先获取box,目的是要获取ul,目的是要获取li
+    var lis=my$("box").children[0].children;
+    //设置每个li的背景图片
+    for(var i=0;i<lis.length;i++){
+        lis[i].style.backgroundImage="url(images/"+(i+1)+".jpg)";
+        lis[i].onmouseover=mouseoverHandle;//鼠标进入
+        lis[i].onmouseout=mouseoutHandle;//鼠标离开
+    }
+    function mouseoverHandle() {
+        for(var j=0;j<lis.length;j++){
+            animate(lis[j],{"width":100});//每个元素的宽度渐渐的变成100
+        }
+        animate(this,{"width":800});//鼠标进入的当前的元素的宽度渐渐的变成800
+    }
+    function mouseoutHandle() {
+        for(var j=0;j<lis.length;j++){
+            animate(lis[j],{"width":240});//鼠标离开后每个li的宽度渐渐的为240
+        }
+    }
+
+</script>
+</body>
+</html>
